@@ -2,15 +2,10 @@
 import urlparse
 import scrapy
 
-from scrapy.http import Request
-
-
 class RavencrawlerSpider(scrapy.Spider):
     name = 'ravencrawler'
     allowed_domains = ['eraven.franklinpierce.edu']
     start_urls = ['http://eraven.franklinpierce.edu/']
-
-	
 
     def parse(self, response):
        
@@ -19,7 +14,6 @@ class RavencrawlerSpider(scrapy.Spider):
         links = response.xpath("//item/link/text()").extract()
         date = response.xpath('//item/pubDate/text()').extract()
 		
-       
         #Give the extracted content row wise
         for item in zip(titles,links,date,comments):
             #create a dictionary to store the scraped info
@@ -28,6 +22,5 @@ class RavencrawlerSpider(scrapy.Spider):
                 'links' : item[1],
                 'date' : item[2],
             }
-
             #yield or give the scraped info to scrapy
             yield scraped_info
