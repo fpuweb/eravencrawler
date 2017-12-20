@@ -10,7 +10,7 @@ class RavencrawlerSpider(scrapy.Spider):
     def parse(self, response):
        
         #Extract article information
-		titles = response.xpath('//item/title/text()').extract()
+	titles = response.xpath('//item/title/text()').extract()
         links = response.xpath("//item/link/text()").extract()
         date = response.xpath('//item/pubDate/text()').extract()
 		
