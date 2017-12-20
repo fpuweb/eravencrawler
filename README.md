@@ -1,3 +1,3 @@
 # eravencrawler
 
-Testing crawler development
+Testing crawler development using ScrapingHub and Scrapy
